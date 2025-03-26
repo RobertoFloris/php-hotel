@@ -40,6 +40,14 @@
 
     ];
 
+    $parking_requested = false;
+
+    if(isset($_GET['parking']) && $_GET['parking']=="on"){
+        $parking_requested = true;
+    }
+
+    var_dump($parking_requested)
+
 ?>
 
 <!DOCTYPE html>
@@ -50,9 +58,20 @@
   <title>Document</title>
 </head>
 <body>
+    <form action="">
+        <input type="checkbox" id="parking" name="parking">
+        <label for="parking">Clicca qui per avere solo gli hotel con il parcheggio</label>
+        <button>Applica filtri</button>
+    </form>
   <?php 
 
     foreach ($hotels as $hotel) {
+        if($parking_requested){
+            if(!$hotel['parking']){
+                continue; // salta solo l'iterazione corrente ma poi procede a controllare gli altri hotel. Per questo non posso utilizzare break
+            }
+        }
+
         echo '<h2>' . $hotel['name'] . '</h2>';
         echo '<p>' . $hotel['description'] . '</p>';
         echo '<p>Parcheggio: ' . ($hotel['parking'] ? 'Si' : 'No') . '</p>';
