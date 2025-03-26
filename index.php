@@ -58,18 +58,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css' integrity='sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==' crossorigin='anonymous'/>
+  <title>PHP HOTELS</title>
 </head>
 <body>
     <form action="">
-        <div>
-            <input type="checkbox" id="parking" name="parking">
-            <label for="parking">Clicca qui per avere solo gli hotel con il parcheggio</label>
-        </div>
+        <div class="d-flex">
+            <div class="form-control">
+                <input type="checkbox" id="parking" name="parking">
+                <label for="parking">Clicca qui per avere solo gli hotel con il parcheggio</label>
+            </div>
 
-        <div>
-            <input type="number" id="minVote" name="minVote" min=1 max=5>
-            <label for="minVote">Voto minimo?</label>
+            <div class="form-control">
+                <input type="number" id="minVote" name="minVote" min=1 max=5>
+                <label for="minVote">Voto minimo?</label>
+            </div>
         </div>
 
 
