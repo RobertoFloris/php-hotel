@@ -46,7 +46,10 @@
         $parking_requested = true;
     }
 
-    var_dump($parking_requested)
+    $minVote = 0;
+    if(isset($_GET['minVote']) && is_numeric($_GET['minVote']) && $_GET['minVote'] > 0 && $_GET['minVote'] <= 5){
+        $minVote = (int) $_GET['minVote'];
+    }
 
 ?>
 
@@ -59,8 +62,17 @@
 </head>
 <body>
     <form action="">
-        <input type="checkbox" id="parking" name="parking">
-        <label for="parking">Clicca qui per avere solo gli hotel con il parcheggio</label>
+        <div>
+            <input type="checkbox" id="parking" name="parking">
+            <label for="parking">Clicca qui per avere solo gli hotel con il parcheggio</label>
+        </div>
+
+        <div>
+            <input type="number" id="minVote" name="minVote" min=1 max=5>
+            <label for="minVote">Voto minimo?</label>
+        </div>
+
+
         <button>Applica filtri</button>
     </form>
   <?php 
@@ -70,6 +82,10 @@
             if(!$hotel['parking']){
                 continue; // salta solo l'iterazione corrente ma poi procede a controllare gli altri hotel. Per questo non posso utilizzare break
             }
+        }
+
+        if($hotel['vote'] < $minVote){
+            continue;
         }
 
         echo '<h2>' . $hotel['name'] . '</h2>';
